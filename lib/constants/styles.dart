@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class Styles {
   static const Color bgStartApp = Color.fromRGBO(0, 171, 132, 1);
+  static const Color divider = Color.fromRGBO(219, 228, 198, 1);
   static const Color bgBackground = Color.fromRGBO(217, 244, 218, 1);
   static const Color colorBar = Color.fromRGBO(242, 240, 235, 1);
   static const Color colorFont = Color.fromRGBO(175, 133, 92, 1);

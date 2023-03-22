@@ -28,6 +28,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
         backgroundColor: Styles.bgStartApp,
         shadowColor: Colors.transparent,
         centerTitle: true,
+        leading: const BackButton(color: Colors.transparent,),
         title:
         const Text("Expire Things", style: TextStyle(color: Styles.colorStartApp)),
       ),

@@ -6,6 +6,7 @@ class Styles {
   static const Color bgBackground = Color.fromRGBO(217, 244, 218, 1);
   static const Color colorBar = Color.fromRGBO(242, 240, 235, 1);
   static const Color colorFont = Color.fromRGBO(175, 133, 92, 1);
+  static const Color colorDialogBox = Color.fromRGBO(196, 162, 129, 1);
   static const Color colorStartApp = Color.fromRGBO(236, 235, 189, 1);
 
   static var boxShadows = [

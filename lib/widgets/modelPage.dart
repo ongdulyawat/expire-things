@@ -2,6 +2,8 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:expire_app/constants/styles.dart';
 import 'package:expire_app/screens/add_product/add_product_screen.dart';
 import 'package:expire_app/screens/calendar/calendar_screen.dart';
+import 'package:expire_app/screens/shopping_list/shopping_list_screen.dart';
+import 'package:expire_app/screens/camera_qr/camera_qr_screen.dart';
 import 'package:expire_app/screens/home_page/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +18,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
   int index = 0;
   final screens = [
     const HomeScreen(),
+    const ShoppingListScreen(),
     const AddProductScreen(),
+    const CameraQrScreen(),
     const CalendarScreen()
   ];
 
@@ -28,9 +32,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
         backgroundColor: Styles.bgStartApp,
         shadowColor: Colors.transparent,
         centerTitle: true,
-        leading: const BackButton(color: Colors.transparent,),
-        title:
-        const Text("Expire Things", style: TextStyle(color: Styles.colorStartApp)),
+        leading: const BackButton(
+          color: Colors.transparent,
+        ),
+        title: const Text("Expire Things",
+            style: TextStyle(color: Styles.colorStartApp)),
       ),
       body: screens[index],
       bottomNavigationBar: CurvedNavigationBar(
@@ -39,12 +45,16 @@ class _BottomNavigationState extends State<BottomNavigation> {
         animationDuration: const Duration(milliseconds: 300),
         index: index,
         onTap: (index) => setState(() {
-          this.index  = index;
+          this.index = index;
         }),
         items: const [
           Icon(Icons.home, color: Styles.colorStartApp, size: 35),
+          Icon(Icons.checklist_outlined, color: Styles.colorStartApp, size: 35),
           Icon(Icons.add_circle_outline, color: Styles.colorStartApp, size: 35),
-          Icon(Icons.calendar_month_outlined, color: Styles.colorStartApp, size: 35),
+          Icon(Icons.camera_enhance_outlined,
+              color: Styles.colorStartApp, size: 35),
+          Icon(Icons.calendar_month_outlined,
+              color: Styles.colorStartApp, size: 35),
         ],
       ),
     );

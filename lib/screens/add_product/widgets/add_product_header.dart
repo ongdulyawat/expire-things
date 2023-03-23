@@ -69,10 +69,10 @@ class _AddProductHeaderState extends State<AddProductHeader> {
               onPressed: () async {
                 final picker = ImagePicker();
                 final pickedFile =
-                    await picker.getImage(source: ImageSource.gallery);
+                    await picker.pickImage(source: ImageSource.gallery);
 
                 if (pickedFile == null) return;
-
+                isFile = true;
                 if (isFile) {
                   final file = File(pickedFile.path);
 

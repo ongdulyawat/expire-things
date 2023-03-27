@@ -19,22 +19,26 @@ class ItemBox extends StatefulWidget {
 
 class _ItemBoxState extends State<ItemBox> {
   DateTime now = DateTime.now();
-  late String dateString;
-  late DateTime date;
-  late DateFormat formatter;
+
+  late DateTime currentDate;
+  late DateTime expireDate;
+  bool expire = false;
 
   @override
   void initState() {
     super.initState();
-    dateString = widget.date;
-    date = DateTime.parse(dateString);
-    formatter = DateFormat('yyyy-MM-dd');
+    currentDate = DateTime.now();
+    expireDate = DateTime.parse(widget.date);
   }
 
   @override
   Widget build(BuildContext context) {
-    String formattedDate = formatter.format(date);
-    String dateOnly = formattedDate.split(' ')[0];
+    Duration difference = expireDate.difference(currentDate);
+    int days = difference.inDays;
+    if (days <= 0) {
+      expire = true;
+    }
+
     return InkWell(
       onTap: () {},
       child: Column(
@@ -83,11 +87,15 @@ class _ItemBoxState extends State<ItemBox> {
                     height: 30,
                     width: double.infinity,
                     child: Center(
-                      child: Text(
-                        dateOnly.toString(),
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                    ),
+                        child: !expire
+                            ? Text(
+                                days.toString() + ' D',
+                                style: Theme.of(context).textTheme.titleMedium,
+                              )
+                            : Text(
+                                'Expire',
+                                style: Theme.of(context).textTheme.titleMedium,
+                              )),
                   ),
                 )
               ],

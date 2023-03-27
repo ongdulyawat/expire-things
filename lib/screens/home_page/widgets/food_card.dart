@@ -30,18 +30,21 @@ class _FoodCardState extends State<FoodCard> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 35, vertical: 40),
-      child: GridView.count(
-        crossAxisCount: 2,
-        crossAxisSpacing: 40,
-        mainAxisSpacing: 30,
-        children: [
-          ListView.builder(
-            itemCount: db.productsList.length,
-            itemBuilder: (context, index) {
-              return Text(db.productsList[index]);
-            },
-          ),
-        ],
+      child: GridView.builder(
+        itemCount: db.productsList.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 40,
+          mainAxisSpacing: 30,
+        ),
+        itemBuilder: (context, index) {
+          return ItemBox(
+            photoPath: db.productsList[index][0],
+            type: db.productsList[index][1],
+            date: db.productsList[index][2],
+            notes: db.productsList[index][3],
+          );
+        },
       ),
     );
   }

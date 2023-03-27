@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'dart:math';
+import 'package:expire_app/data/products_database.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
@@ -13,6 +15,11 @@ class CameraBarcodeProduct extends StatefulWidget {
 }
 
 class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
+  // reference the hive box
+  final _productsBox = Hive.box('productsBox');
+
+  ProductsDataBase db = ProductsDataBase();
+
   bool isFile = false;
   File? fileImage;
   late Uint8List memoryImage;
@@ -21,6 +28,19 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
 
   Random random = Random();
 
+  @override
+  void initState() {
+    // if this is the 1st time ever opening the appk, then create default data
+    if (_productsBox.get("PRODUCTSLIST") == null) {
+      db.createInitialData();
+    } else {
+      // there already exists data
+      db.loadData();
+    }
+
+    super.initState();
+  }
+
   String generateRandomNumber() {
     String randomNumber = '';
     for (var i = 0; i < 10; i++) {
@@ -28,6 +48,7 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
     }
     return randomNumber;
   }
+
   String generateRandomDate() {
     final now = DateTime.now();
     final randomYear = now.year + Random().nextInt(2); // 0 or 1 year in future
@@ -36,6 +57,7 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
     final randomDate = DateTime(randomYear, randomMonth, randomDay);
     return DateFormat("yyyy-MM-dd").format(randomDate);
   }
+
   void add() {
     setState(() {
       value++;
@@ -47,6 +69,7 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
       value--;
     });
   }
+
   void cancel() {
     setState(() {
       fileImage = null;
@@ -56,7 +79,6 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
   void save() {
     // Implement your save functionality here
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -80,11 +102,10 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
                 padding: const EdgeInsets.all(20.0),
                 child: fileImage == null
                     ? Image.asset(
-                  barcodeImage,
-                  fit: BoxFit.cover,
-                )
+                        barcodeImage,
+                        fit: BoxFit.cover,
+                      )
                     : Image.file(fileImage!),
-
               ),
             ),
           ),
@@ -98,7 +119,7 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
               onPressed: () async {
                 final picker = ImagePicker();
                 final pickedFile =
-                await picker.pickImage(source: ImageSource.gallery);
+                    await picker.pickImage(source: ImageSource.gallery);
 
                 if (pickedFile == null) return;
                 isFile = true;
@@ -117,8 +138,7 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
                   borderRadius: BorderRadius.circular(30.0),
                 ),
               ),
-              child:
-              const Text('Add Barcode', style: TextStyle(fontSize: 18))),
+              child: const Text('Add Barcode', style: TextStyle(fontSize: 18))),
         ),
         SizedBox(height: 10),
         Padding(
@@ -130,8 +150,8 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
               children: [
                 if (fileImage != null)
                   Padding(
-                    padding: EdgeInsets.only(top: 15,bottom: 15),
-                    child : Text(
+                    padding: EdgeInsets.only(top: 15, bottom: 15),
+                    child: Text(
                       'Barcode Number : ${generateRandomNumber()}',
                       style: TextStyle(
                         fontSize: 16,
@@ -143,7 +163,7 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
                 if (fileImage != null)
                   const Padding(
                     padding: EdgeInsets.only(bottom: 15),
-                    child : Text(
+                    child: Text(
                       'Category : Food',
                       style: TextStyle(
                         fontSize: 16,
@@ -155,7 +175,7 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
                 if (fileImage != null)
                   Padding(
                     padding: EdgeInsets.only(bottom: 15),
-                    child : Text(
+                    child: Text(
                       'Expire date : ${generateRandomDate()}',
                       style: TextStyle(
                         fontSize: 16,
@@ -168,8 +188,6 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
             ),
           ),
         ),
-
-
         if (fileImage != null)
           const TextField(
             maxLines: 1,
@@ -178,7 +196,7 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
             decoration: InputDecoration(
               filled: true,
               prefixIcon: Padding(
-                padding: const EdgeInsets.only(left: 15.0, right: 15,top: 15),
+                padding: const EdgeInsets.only(left: 15.0, right: 15, top: 15),
                 child: Text(
                   "Notes:",
                   style: TextStyle(
@@ -196,7 +214,6 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
               hintText: '(optionals)',
             ),
           ),
-
         const SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -237,9 +254,7 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
             ),
           ],
         ),
-
       ],
     );
   }
 }
-

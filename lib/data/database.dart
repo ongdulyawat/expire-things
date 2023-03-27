@@ -19,7 +19,7 @@ class ShoppingDataBase {
     toDoList = _listBox.get("SHOPPINGLIST");
   }
 
-  // opdate the database
+  // update the database
   void updataDataBase() {
     _listBox.put("SHOPPINGLIST", toDoList);
   }

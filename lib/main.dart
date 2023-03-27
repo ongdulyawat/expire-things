@@ -9,6 +9,7 @@ void main() async {
 
   //reference a box
   var box = await Hive.openBox('listBox');
+  var productsBox = await Hive.openBox('productsBox');
   runApp(const MyApp());
 }
 

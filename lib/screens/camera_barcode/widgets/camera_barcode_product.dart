@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:expire_app/data/products_database.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
@@ -23,8 +24,11 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
   bool isFile = false;
   File? fileImage;
   late Uint8List memoryImage;
-
+  String typeCategory = '';
+  String pathPic = 'assets/images/';
+  String pathPicUse = '';
   int value = 0;
+  final TextEditingController _noteController = TextEditingController();
 
   Random random = Random();
 
@@ -37,8 +41,8 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
       // there already exists data
       db.loadData();
     }
-
     super.initState();
+    randomPick();
   }
 
   String generateRandomNumber() {
@@ -70,13 +74,40 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
     });
   }
 
+  void randomPick(){
+    List<String> listPic = ['chips.jpg','milk.jpg','softdrink.jpg','watermelon.jpg'];
+    //Random randomPic = Random();
+    int randomIndex = random.nextInt(listPic.length);
+    String randomEle = listPic[randomIndex];
+    pathPicUse = pathPic+randomEle;
+    if(randomIndex == 0){
+      typeCategory = 'Snacks';
+    }
+    else if(randomIndex == 1 || randomIndex == 2){
+      typeCategory = 'Drink';
+    }
+    else{
+      typeCategory = 'Fruit';
+    }
+  }
+
   void cancel() {
     setState(() {
+      _noteController.clear();
+      randomPick();
       fileImage = null;
     });
   }
-
   void save() {
+    setState(() {
+      db.productsList.add([pathPicUse,typeCategory,generateRandomDate(),_noteController.text.toString()]);
+    });
+    // Navigator.of(context).pop();
+    db.updataDataBase();
+    print(db.productsList);
+    randomPick();
+    _noteController.clear();
+    fileImage = null;
     // Implement your save functionality here
   }
 
@@ -105,7 +136,11 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
                         barcodeImage,
                         fit: BoxFit.cover,
                       )
-                    : Image.file(fileImage!),
+                    //: Image.file(fileImage!),
+                :Image.asset(
+                  pathPicUse,
+                  fit: BoxFit.cover,
+                )
               ),
             ),
           ),
@@ -161,10 +196,10 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
                     ),
                   ),
                 if (fileImage != null)
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(bottom: 15),
                     child: Text(
-                      'Category : Food',
+                      'Category : '+typeCategory,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.normal,
@@ -189,10 +224,11 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
           ),
         ),
         if (fileImage != null)
-          const TextField(
+          TextField(
             maxLines: 1,
             style: TextStyle(fontSize: 17),
             textAlignVertical: TextAlignVertical.center,
+            controller: _noteController,
             decoration: InputDecoration(
               filled: true,
               prefixIcon: Padding(

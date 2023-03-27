@@ -3,9 +3,10 @@ import 'package:expire_app/constants/styles.dart';
 import 'package:expire_app/screens/add_product/add_product_screen.dart';
 import 'package:expire_app/screens/calendar/calendar_screen.dart';
 import 'package:expire_app/screens/shopping_list/shopping_list_screen.dart';
-import 'package:expire_app/screens/camera_qr/camera_qr_screen.dart';
 import 'package:expire_app/screens/home_page/home_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../screens/camera_barcode/camera_barcode_screen.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     const HomeScreen(),
     const ShoppingListScreen(),
     const AddProductScreen(),
-    const CameraQrScreen(),
+    const CameraBarcodeScreen(),
     const CalendarScreen()
   ];
 

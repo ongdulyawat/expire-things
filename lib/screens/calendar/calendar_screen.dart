@@ -1,4 +1,5 @@
 import 'package:expire_app/constants/styles.dart';
+import 'package:expire_app/screens/calendar/widgets/calendar_body.dart';
 import 'package:flutter/material.dart';
 
 class CalendarScreen extends StatefulWidget {
@@ -13,6 +14,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: Styles.bgBackground,
+      body: CalendarBody(),
     );
   }
 }

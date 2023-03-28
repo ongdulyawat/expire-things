@@ -1,3 +1,4 @@
+import 'package:expire_app/screens/info_item/info_item_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -6,12 +7,14 @@ class ItemBox extends StatefulWidget {
   final String type;
   final String date;
   final String notes;
+  final int index;
   const ItemBox(
       {super.key,
       required this.photoPath,
       required this.type,
       required this.date,
-      required this.notes});
+      required this.notes,
+      required this.index});
 
   @override
   State<ItemBox> createState() => _ItemBoxState();
@@ -40,7 +43,18 @@ class _ItemBoxState extends State<ItemBox> {
     }
 
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => InfoScreen(
+                      photoPath: widget.photoPath,
+                      type: widget.type,
+                      date: widget.date,
+                      notes: widget.notes,
+                      index: widget.index,
+                    )));
+      },
       child: Column(
         children: [
           Container(

@@ -43,6 +43,7 @@ class _FoodCardState extends State<FoodCard> {
             type: db.productsList[index][1],
             date: db.productsList[index][2],
             notes: db.productsList[index][3],
+            index: index,
           );
         },
       ),

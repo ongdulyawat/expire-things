@@ -78,6 +78,8 @@ class _AddProductHeaderState extends State<AddProductHeader> {
 
                   setState(() {
                     fileImage = file;
+                    // print(file);
+                    print(file.path);
                   });
                 }
               },

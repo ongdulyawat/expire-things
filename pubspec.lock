@@ -5,18 +5,18 @@ packages:
     dependency: transitive
     description:
       name: _fe_analyzer_shared
-      sha256: d74f051467a841ce893a50ebeb420b7a5695f985d2781e22b3927fbc849aea45
+      sha256: "3444216bfd127af50bbe4862d8843ed44db946dd933554f0d7285e89f10e28ac"
       url: "https://pub.dev"
     source: hosted
-    version: "57.0.0"
+    version: "50.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
-      sha256: b665679cdccab0c754e65021f01087c6fab07a0b13659dd58827f765739b40f8
+      sha256: "68796c31f510c8455a06fed75fc97d8e5ad04d324a830322ab3efc9feb6201c1"
       url: "https://pub.dev"
     source: hosted
-    version: "5.9.0"
+    version: "5.2.0"
   args:
     dependency: transitive
     description:
@@ -69,10 +69,10 @@ packages:
     dependency: transitive
     description:
       name: build_resolvers
-      sha256: db49b8609ef8c81cca2b310618c3017c00f03a92af44c04d310b907b2d692d95
+      sha256: "7c35a3a7868626257d8aee47b51c26b9dba11eaddf3431117ed2744951416aab"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.0"
+    version: "2.1.0"
   build_runner:
     dependency: "direct dev"
     description:
@@ -181,10 +181,10 @@ packages:
     dependency: transitive
     description:
       name: dart_style
-      sha256: "6d691edde054969f0e0f26abb1b30834b5138b963793e56f69d3a9a4435e6352"
+      sha256: "5be16bf1707658e4c03078d4a9b90208ded217fb02c163e207d334082412f2fb"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.0"
+    version: "2.2.5"
   fake_async:
     dependency: transitive
     description:
@@ -213,10 +213,10 @@ packages:
     dependency: transitive
     description:
       name: fixnum
-      sha256: "25517a4deb0c03aa0f32fd12db525856438902d9c16536311e76cdc57b31d7d1"
+      sha256: "04be3e934c52e082558cc9ee21f42f5c1cd7a1262f4c63cd0357c08d5bba81ec"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.0"
+    version: "1.0.1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -356,18 +356,18 @@ packages:
     dependency: "direct main"
     description:
       name: image_picker
-      sha256: "64b21d9f0e065f9ab0e4dde458076226c97382cc0c6949144cb874c62bf8e9f8"
+      sha256: cb25f04595a88450970dbe727243ba8cd21b6f7e0d7d1fc5b789fc6f52e95494
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.7"
+    version: "0.8.7+1"
   image_picker_android:
     dependency: transitive
     description:
       name: image_picker_android
-      sha256: b81db5f5ed8a69d54d5f0932c2af8120e8c0518a037d8beee494eec671da4d4c
+      sha256: dfb5b0f28b8786fcc662b7ed42bfb4b82a6cbbd74da1958384b10d40bdf212a7
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.6+5"
+    version: "0.8.6+6"
   image_picker_for_web:
     dependency: transitive
     description:
@@ -380,10 +380,10 @@ packages:
     dependency: transitive
     description:
       name: image_picker_ios
-      sha256: "50e882fe0a06bf0c8f7f5bce78d30975f279213293afc9471dc35f05617c50ff"
+      sha256: d4cb8ab04f770dab9d04c7959e5f6d22e8c5280343d425f9344f93832cf58445
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.7+1"
+    version: "0.8.7+2"
   image_picker_platform_interface:
     dependency: transitive
     description:

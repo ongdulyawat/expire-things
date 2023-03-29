@@ -1,5 +1,11 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:expire_app/constants/styles.dart';
+import 'package:expire_app/controller/product_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+import 'add_product_footer.dart';
 
 class AddProductBody extends StatefulWidget {
   const AddProductBody({Key? key}) : super(key: key);
@@ -18,6 +24,10 @@ class _AddProductBodyState extends State<AddProductBody> {
     "Meat",
   ];
   DateTime start_date = DateTime.now();
+  final TextEditingController _noteController = TextEditingController();
+
+  ProductController productcontroller = ProductController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +39,7 @@ class _AddProductBodyState extends State<AddProductBody> {
             maxLines: 1,
             style: TextStyle(fontSize: 17),
             textAlignVertical: TextAlignVertical.center,
+            controller: _noteController,
             decoration: InputDecoration(
               filled: true,
               prefixIcon: Padding(
@@ -66,7 +77,9 @@ class _AddProductBodyState extends State<AddProductBody> {
                   }).toList(),
                   onChanged: (String? newValue) {
                     setState(() {
+                      print("-- Category : $newValue --");
                       _selectCategory = newValue!;
+                    productcontroller.setTest(_selectCategory);
                     });
                   },
                 ),
@@ -97,6 +110,9 @@ class _AddProductBodyState extends State<AddProductBody> {
                               lastDate: DateTime(DateTime.now().year + 10));
                           if (newdate1 == null) return;
                           setState(() => start_date = newdate1);
+                          print(start_date);
+                          print(DateFormat('yyyy-MM-dd').format(start_date));
+                          // productcontroller.checkInputAddProduct();
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,

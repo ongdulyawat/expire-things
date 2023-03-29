@@ -1,5 +1,7 @@
 import 'package:expire_app/constants/styles.dart';
+import 'package:expire_app/controller/product_controller.dart';
 import 'package:flutter/material.dart';
+
 
 class AddProductFooter extends StatefulWidget {
   const AddProductFooter({Key? key}) : super(key: key);
@@ -9,6 +11,9 @@ class AddProductFooter extends StatefulWidget {
 }
 
 class _AddProductFooterState extends State<AddProductFooter> {
+
+  ProductController productController = ProductController();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,6 +27,7 @@ class _AddProductFooterState extends State<AddProductFooter> {
             child: SizedBox(
               child: ElevatedButton(
                   onPressed: () async {
+                    print("-- delete button --");
                   },
                   style: ElevatedButton.styleFrom(
                     shadowColor: Colors.transparent,
@@ -41,6 +47,8 @@ class _AddProductFooterState extends State<AddProductFooter> {
             child: SizedBox(
               child: ElevatedButton(
                   onPressed: () async {
+                    print("-- save button --");
+                    productController.createProduct();
                   },
                   style: ElevatedButton.styleFrom(
                     shadowColor: Colors.transparent,

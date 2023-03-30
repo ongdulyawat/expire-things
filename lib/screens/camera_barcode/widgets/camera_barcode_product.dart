@@ -55,13 +55,13 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
     return randomNumber;
   }
 
-  String generateRandomDate() {
+  DateTime generateRandomDate() {
     final now = DateTime.now();
     final randomYear = now.year + Random().nextInt(2); // 0 or 1 year in future
     final randomMonth = Random().nextInt(12) + 1; // 1-12
     final randomDay = Random().nextInt(31) + 1; // 1-31
     final randomDate = DateTime(randomYear, randomMonth, randomDay);
-    return DateFormat("yyyy-MM-dd").format(randomDate);
+    return randomDate;
   }
 
   void add() {
@@ -221,7 +221,7 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
                   Padding(
                     padding: EdgeInsets.only(bottom: 15),
                     child: Text(
-                      'Expire date : ${generateRandomDate()}',
+                      'Expire date : ${DateFormat("yyyy-MM-dd").format(generateRandomDate())}',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.normal,

@@ -8,6 +8,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
+import '../../../constants/styles.dart';
+
 class CameraBarcodeProduct extends StatefulWidget {
   const CameraBarcodeProduct({Key? key}) : super(key: key);
 
@@ -74,19 +76,22 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
     });
   }
 
-  void randomPick(){
-    List<String> listPic = ['chips.jpg','milk.jpg','softdrink.jpg','watermelon.jpg'];
+  void randomPick() {
+    List<String> listPic = [
+      'chips.jpg',
+      'milk.jpg',
+      'softdrink.jpg',
+      'watermelon.jpg'
+    ];
     //Random randomPic = Random();
     int randomIndex = random.nextInt(listPic.length);
     String randomEle = listPic[randomIndex];
-    pathPicUse = pathPic+randomEle;
-    if(randomIndex == 0){
+    pathPicUse = pathPic + randomEle;
+    if (randomIndex == 0) {
       typeCategory = 'Snacks';
-    }
-    else if(randomIndex == 1 || randomIndex == 2){
+    } else if (randomIndex == 1 || randomIndex == 2) {
       typeCategory = 'Drink';
-    }
-    else{
+    } else {
       typeCategory = 'Fruit';
     }
   }
@@ -98,9 +103,15 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
       fileImage = null;
     });
   }
+
   void save() {
     setState(() {
-      db.productsList.add([pathPicUse,typeCategory,generateRandomDate(),_noteController.text.toString()]);
+      db.productsList.add([
+        pathPicUse,
+        typeCategory,
+        generateRandomDate(),
+        _noteController.text.toString()
+      ]);
     });
     // Navigator.of(context).pop();
     db.updataDataBase();
@@ -130,18 +141,17 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: fileImage == null
-                    ? Image.asset(
-                        barcodeImage,
-                        fit: BoxFit.cover,
-                      )
-                    //: Image.file(fileImage!),
-                :Image.asset(
-                  pathPicUse,
-                  fit: BoxFit.cover,
-                )
-              ),
+                  padding: const EdgeInsets.all(20.0),
+                  child: fileImage == null
+                      ? Image.asset(
+                          barcodeImage,
+                          fit: BoxFit.cover,
+                        )
+                      //: Image.file(fileImage!),
+                      : Image.asset(
+                          pathPicUse,
+                          fit: BoxFit.cover,
+                        )),
             ),
           ),
         ),
@@ -199,7 +209,7 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
                   Padding(
                     padding: EdgeInsets.only(bottom: 15),
                     child: Text(
-                      'Category : '+typeCategory,
+                      'Category : ' + typeCategory,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.normal,
@@ -260,16 +270,20 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
                 padding: const EdgeInsets.only(left: 10, bottom: 10),
                 child: ElevatedButton(
                   onPressed: fileImage == null ? null : cancel,
-                  child: const Text('Cancel'),
+                  child: const Text('Cancel', style: TextStyle(fontSize: 25)),
                   style: ElevatedButton.styleFrom(
+                    shadowColor: Colors.transparent,
                     foregroundColor: Colors.white,
-                    backgroundColor: Colors.red,
+                    backgroundColor: Colors.red[200],
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
+                      borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
                 ),
               ),
+            ),
+            SizedBox(
+              width: 10,
             ),
             Expanded(
               flex: 1,
@@ -277,12 +291,13 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
                 padding: const EdgeInsets.only(right: 10, bottom: 10),
                 child: ElevatedButton(
                   onPressed: fileImage == null ? null : save,
-                  child: const Text('Save'),
+                  child: const Text('SAVE', style: TextStyle(fontSize: 25)),
                   style: ElevatedButton.styleFrom(
+                    shadowColor: Colors.transparent,
                     foregroundColor: Colors.white,
-                    backgroundColor: Colors.green,
+                    backgroundColor: Colors.green[200],
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
+                      borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
                 ),

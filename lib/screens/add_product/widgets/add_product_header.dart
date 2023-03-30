@@ -22,7 +22,7 @@ class _AddProductHeaderState extends State<AddProductHeader> {
   String pathPic = 'assets/images/';
   String pathPicUse = "";
 
-  int value = 0;
+  int value = 1;
 
   void add() {
     setState(() {
@@ -84,7 +84,7 @@ class _AddProductHeaderState extends State<AddProductHeader> {
 
                   setState(() {
                     fileImage = file;
-                    pathPicUse = pathPic+pickedFile.name;
+                    pathPicUse = pathPic + pickedFile.name;
 
                     // save file
                     // pickedFile.saveTo(pathPicUse);
@@ -109,9 +109,9 @@ class _AddProductHeaderState extends State<AddProductHeader> {
             GestureDetector(
                 onTap: () {
                   delete();
-                  if (value <= 0) {
+                  if (value <= 1) {
                     setState(() {
-                      value = 0;
+                      value = 1;
                     });
                   }
                 },
@@ -136,7 +136,7 @@ class _AddProductHeaderState extends State<AddProductHeader> {
           ],
         ),
         SizedBox(height: 10),
-        AddProductBody(filePath: pathPicUse, value :value)
+        AddProductBody(filePath: pathPicUse, value: value)
       ],
     );
   }

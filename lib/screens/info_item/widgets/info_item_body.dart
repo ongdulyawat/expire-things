@@ -134,7 +134,7 @@ class _InfoItemBodyState extends State<InfoItemBody> {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      '     Exipre:   Aleready Expire',
+                      '     Exipre:   Already Expire',
                       style: TextStyle(fontSize: 18),
                     ),
                   ),

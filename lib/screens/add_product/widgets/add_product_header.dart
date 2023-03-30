@@ -77,8 +77,6 @@ class _AddProductHeaderState extends State<AddProductHeader> {
                 final pickedFile =
                     await picker.pickImage(source: ImageSource.gallery);
 
-                // final String path = (await getApplicationDocumentsDirectory()).path;
-
                 if (pickedFile == null) return;
                 isFile = true;
                 if (isFile) {
@@ -86,10 +84,8 @@ class _AddProductHeaderState extends State<AddProductHeader> {
 
                   setState(() {
                     fileImage = file;
-                    pathPicUse = pathPic+basename(pickedFile.path);
-                    // print(basename(pickedFile.path));
-                    // print(pickedFile.path);
-                    
+                    pathPicUse = pathPic+pickedFile.name;
+
                     // save file
                     // pickedFile.saveTo(pathPicUse);
                   });

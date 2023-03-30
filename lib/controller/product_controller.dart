@@ -8,7 +8,7 @@ class ProductController{
 
   bool checkInputAddProduct(String pathImage, int count, String note, String? category, String? expireDate)   {
     bool check = false;
-    if (pathImage != "" && count != 0 && note != "" && category != null && expireDate != null) {
+    if (pathImage != "" && count != 0 &&  category != null && expireDate != null) {
       _note = note;
       _category = category;
       _expireDate = expireDate;

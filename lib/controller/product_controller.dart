@@ -4,45 +4,22 @@ class ProductController{
   String _note = "-";
   String _category = "";
   String _expireDate = "";
-  bool check = false;
 
-  String test = "--";
 
-  void setTest(String s){
-    test = s;
-    print(test);
+  bool checkInputAddProduct(String pathImage, int count, String note, String? category, String? expireDate)   {
+    bool check = false;
+    if (pathImage != "" && count != 0 && note != "" && category != null && expireDate != null) {
+      _note = note;
+      _category = category;
+      _expireDate = expireDate;
+      _pathImage = pathImage;
+      _count = count;
+      check = true;
+    }
+    else{
+      check = false;
+    }
+    return check;
   }
-
-    bool checkInputAddProductHeader(String? pathImage, int? count)   {
-      if (pathImage != null && count != null) {
-        _pathImage = pathImage;
-        _count = count;
-        check = true;
-      }
-      else{
-        check = false;
-      }
-      return check;
-    }
-
-    bool checkInputAddProductBody(String? note, String? category, String? expireDate)   {
-
-      if (note != null && category != null && expireDate != null) {
-        _note = note;
-        _category = category;
-        _expireDate = expireDate;
-        check = true;
-      }
-      else{
-        check = false;
-      }
-      return check;
-    }
-
-  void createProduct()   {
-    print(test);
-
-    }
-
 
 }

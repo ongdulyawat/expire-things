@@ -3,6 +3,10 @@ import 'package:expire_app/constants/styles.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
+
+import 'add_product_body.dart';
 
 class AddProductHeader extends StatefulWidget {
   const AddProductHeader({Key? key}) : super(key: key);
@@ -15,6 +19,8 @@ class _AddProductHeaderState extends State<AddProductHeader> {
   bool isFile = false;
   File? fileImage;
   late Uint8List memoryImage;
+  String pathPic = 'assets/images/';
+  String pathPicUse = "";
 
   int value = 0;
 
@@ -71,6 +77,8 @@ class _AddProductHeaderState extends State<AddProductHeader> {
                 final pickedFile =
                     await picker.pickImage(source: ImageSource.gallery);
 
+                // final String path = (await getApplicationDocumentsDirectory()).path;
+
                 if (pickedFile == null) return;
                 isFile = true;
                 if (isFile) {
@@ -78,8 +86,12 @@ class _AddProductHeaderState extends State<AddProductHeader> {
 
                   setState(() {
                     fileImage = file;
-                    // print(file);
-                    print(file.path);
+                    pathPicUse = pathPic+basename(pickedFile.path);
+                    // print(basename(pickedFile.path));
+                    // print(pickedFile.path);
+                    
+                    // save file
+                    // pickedFile.saveTo(pathPicUse);
                   });
                 }
               },
@@ -126,7 +138,9 @@ class _AddProductHeaderState extends State<AddProductHeader> {
                   size: 25,
                 )),
           ],
-        )
+        ),
+        SizedBox(height: 10),
+        AddProductBody(filePath: pathPicUse, value :value)
       ],
     );
   }

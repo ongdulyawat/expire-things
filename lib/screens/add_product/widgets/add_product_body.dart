@@ -8,7 +8,9 @@ import 'package:intl/intl.dart';
 import 'add_product_footer.dart';
 
 class AddProductBody extends StatefulWidget {
-  const AddProductBody({Key? key}) : super(key: key);
+  final String filePath;
+  final int value;
+  const AddProductBody({Key? key, required this.filePath, required this.value}) : super(key: key);
 
   @override
   State<AddProductBody> createState() => _AddProductBodyState();
@@ -25,9 +27,8 @@ class _AddProductBodyState extends State<AddProductBody> {
   ];
   DateTime start_date = DateTime.now();
   final TextEditingController _noteController = TextEditingController();
-
   ProductController productcontroller = ProductController();
-
+  String noteInput = "";
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +41,11 @@ class _AddProductBodyState extends State<AddProductBody> {
             style: TextStyle(fontSize: 17),
             textAlignVertical: TextAlignVertical.center,
             controller: _noteController,
+            onChanged: (value) {
+              setState(() {
+                noteInput = _noteController.text;
+              });
+            },
             decoration: InputDecoration(
               filled: true,
               prefixIcon: Padding(
@@ -77,9 +83,7 @@ class _AddProductBodyState extends State<AddProductBody> {
                   }).toList(),
                   onChanged: (String? newValue) {
                     setState(() {
-                      print("-- Category : $newValue --");
                       _selectCategory = newValue!;
-                    productcontroller.setTest(_selectCategory);
                     });
                   },
                 ),
@@ -110,9 +114,7 @@ class _AddProductBodyState extends State<AddProductBody> {
                               lastDate: DateTime(DateTime.now().year + 10));
                           if (newdate1 == null) return;
                           setState(() => start_date = newdate1);
-                          print(start_date);
-                          print(DateFormat('yyyy-MM-dd').format(start_date));
-                          // productcontroller.checkInputAddProduct();
+                          // print(DateFormat('yyyy-MM-dd').format(start_date));
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -138,6 +140,8 @@ class _AddProductBodyState extends State<AddProductBody> {
             ),
           ),
           const Divider(color: Styles.divider, thickness: 2),
+          SizedBox(height: 10),
+          AddProductFooter(filePath: widget.filePath, value : widget.value, note : noteInput, selectCategory : _selectCategory, expireDat : DateFormat('yyyy-MM-dd').format(start_date))
         ],
       ),
     );

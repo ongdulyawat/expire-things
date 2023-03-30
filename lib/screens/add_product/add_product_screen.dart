@@ -19,10 +19,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
       body: Column(
         children: const [
           AddProductHeader(),
-          SizedBox(height: 10),
-          AddProductBody(),
-          SizedBox(height: 10),
-          AddProductFooter()
+          // SizedBox(height: 10),
+          // AddProductBody(),
+          // SizedBox(height: 10),
+          // AddProductFooter()
         ],
       ),
     );

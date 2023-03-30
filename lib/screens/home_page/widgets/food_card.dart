@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:intl/intl.dart';
 import '../../../data/products_database.dart';
 import 'item_box.dart';
 
@@ -41,7 +42,8 @@ class _FoodCardState extends State<FoodCard> {
           return ItemBox(
             photoPath: db.productsList[index][0],
             type: db.productsList[index][1],
-            date: db.productsList[index][2],
+            // date: db.productsList[index][2],
+            date: DateFormat('yyyy-MM-dd').format(db.productsList[index][2]),
             notes: db.productsList[index][3],
             index: index,
           );

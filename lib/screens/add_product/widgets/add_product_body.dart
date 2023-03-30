@@ -141,7 +141,7 @@ class _AddProductBodyState extends State<AddProductBody> {
           ),
           const Divider(color: Styles.divider, thickness: 2),
           SizedBox(height: 10),
-          AddProductFooter(filePath: widget.filePath, value : widget.value, note : noteInput, selectCategory : _selectCategory, expireDat : DateFormat('yyyy-MM-dd').format(start_date))
+          AddProductFooter(filePath: widget.filePath, value : widget.value, note : noteInput, selectCategory : _selectCategory, expireDat : start_date)
         ],
       ),
     );

@@ -14,7 +14,7 @@ class AddProductFooter extends StatefulWidget {
   final int value;
   final String note;
   final String selectCategory;
-  final String expireDat;
+  final DateTime expireDat;
   const AddProductFooter({Key? key, 
     required this.filePath, 
     required this.value,

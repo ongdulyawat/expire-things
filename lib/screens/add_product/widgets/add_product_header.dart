@@ -3,8 +3,6 @@ import 'package:expire_app/constants/styles.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
 
 import 'add_product_body.dart';
 
@@ -19,7 +17,6 @@ class _AddProductHeaderState extends State<AddProductHeader> {
   bool isFile = false;
   File? fileImage;
   late Uint8List memoryImage;
-  String pathPic = 'assets/images/';
   String pathPicUse = "";
 
   int value = 1;
@@ -84,8 +81,7 @@ class _AddProductHeaderState extends State<AddProductHeader> {
 
                   setState(() {
                     fileImage = file;
-                    pathPicUse = pathPic + pickedFile.name;
-
+                    pathPicUse = pickedFile.path;
                     // save file
                     // pickedFile.saveTo(pathPicUse);
                   });

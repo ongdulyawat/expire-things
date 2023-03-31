@@ -10,7 +10,9 @@ import 'add_product_footer.dart';
 class AddProductBody extends StatefulWidget {
   final String filePath;
   final int value;
-  const AddProductBody({Key? key, required this.filePath, required this.value}) : super(key: key);
+
+  const AddProductBody({Key? key, required this.filePath, required this.value})
+      : super(key: key);
 
   @override
   State<AddProductBody> createState() => _AddProductBodyState();
@@ -49,7 +51,7 @@ class _AddProductBodyState extends State<AddProductBody> {
             decoration: InputDecoration(
               filled: true,
               prefixIcon: Padding(
-                padding: const EdgeInsets.only(left: 15.0, right: 15,top: 15),
+                padding: const EdgeInsets.only(left: 15.0, right: 15, top: 15),
                 child: Text("Notes:"),
               ),
               border: OutlineInputBorder(
@@ -141,7 +143,12 @@ class _AddProductBodyState extends State<AddProductBody> {
           ),
           const Divider(color: Styles.divider, thickness: 2),
           SizedBox(height: 10),
-          AddProductFooter(filePath: widget.filePath, value : widget.value, note : noteInput, selectCategory : _selectCategory, expireDat : start_date)
+          AddProductFooter(
+              filePath: widget.filePath,
+              value: widget.value,
+              note: noteInput,
+              selectCategory: _selectCategory,
+              expireDat: start_date)
         ],
       ),
     );

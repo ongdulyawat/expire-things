@@ -75,7 +75,7 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
       body: Column(
         children: [
           SizedBox(
-            height: 640,
+            height: 590,
             child: ListView.builder(
               itemCount: db.toDoList.length,
               itemBuilder: (context, index) {
@@ -88,9 +88,9 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
               },
             ),
           ),
-          const SizedBox(
-            height: 25,
-          ),
+          // const SizedBox(
+          //   height: 25,
+          // ),
           FloatingActionButton(
             onPressed: createNewTask,
             backgroundColor: Styles.colorFont,

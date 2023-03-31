@@ -11,6 +11,7 @@ class InfoItemBody extends StatefulWidget {
   final String date;
   final String notes;
   final int index;
+
   const InfoItemBody(
       {Key? key,
       required this.photoPath,
@@ -33,6 +34,7 @@ class _InfoItemBodyState extends State<InfoItemBody> {
 
   final _productBox = Hive.box('productsBox');
   ProductsDataBase db = ProductsDataBase();
+
   @override
   void initState() {
     currentDate = DateTime.now();
@@ -134,7 +136,7 @@ class _InfoItemBodyState extends State<InfoItemBody> {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      '     Exipre:   Already Expire',
+                      '     Exipre:   Already Expired',
                       style: TextStyle(fontSize: 18),
                     ),
                   ),

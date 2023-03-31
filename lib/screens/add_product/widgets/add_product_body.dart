@@ -1,9 +1,7 @@
-// ignore_for_file: prefer_const_constructors
 
 import 'package:expire_app/constants/styles.dart';
 import 'package:expire_app/controller/product_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import 'add_product_footer.dart';
 

@@ -221,7 +221,7 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
                   Padding(
                     padding: EdgeInsets.only(bottom: 15),
                     child: Text(
-                      'Expire date : ${DateFormat("yyyy-MM-dd").format(generateRandomDate())}',
+                      'Expire date : ${DateFormat("dd/MM/yyyy").format(generateRandomDate())}',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.normal,
@@ -295,7 +295,7 @@ class _CameraBarcodeProductState extends State<CameraBarcodeProduct> {
                   style: ElevatedButton.styleFrom(
                     shadowColor: Colors.transparent,
                     foregroundColor: Colors.white,
-                    backgroundColor: Colors.green[200],
+                    backgroundColor: Styles.bgStartApp,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),

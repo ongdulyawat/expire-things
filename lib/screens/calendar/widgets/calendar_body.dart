@@ -44,18 +44,17 @@ class _CalendarBodyState extends State<CalendarBody> {
     db.loadData();
 
     for (var i = 0; i < db.productsList.length; i++) {
-    
-    Expires.add(TimeRegion(
-      startTime: db.productsList[i][2],
-      endTime: db.productsList[i][2].add(const Duration(hours: 1)),
-      enablePointerInteraction: false,
-      color: Color.fromARGB(255, 237, 10, 10),
-      text: db.productsList[i][1],
-      textStyle: const TextStyle(
-        color: Styles.colorStartApp,
-      ),
-    ));
-  }
+      Expires.add(TimeRegion(
+        startTime: db.productsList[i][2],
+        endTime: db.productsList[i][2].add(const Duration(hours: 1)),
+        enablePointerInteraction: false,
+        color: Color.fromARGB(255, 237, 10, 10),
+        text: db.productsList[i][1],
+        textStyle: const TextStyle(
+          color: Styles.colorStartApp,
+        ),
+      ));
+    }
     return Expires;
   }
 }

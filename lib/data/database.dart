@@ -9,8 +9,8 @@ class ShoppingDataBase {
   // run this method if this is the 1st time ever opening this app
   void createInitialData() {
     toDoList = [
-      ["Apple", false],
-      ["Egg", false],
+      // ["Apple", false],
+      // ["Egg", false],
     ];
   }
 

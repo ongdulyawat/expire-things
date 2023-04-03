@@ -24,6 +24,7 @@ class _AddProductBodyState extends State<AddProductBody> {
     "Eggs",
     "Vegetable",
     "Meat",
+    "Beverage",
   ];
   DateTime start_date = DateTime.now();
   final TextEditingController _noteController = TextEditingController();
@@ -38,7 +39,7 @@ class _AddProductBodyState extends State<AddProductBody> {
           const Divider(color: Styles.divider, thickness: 2),
           TextField(
             maxLines: 1,
-            style: TextStyle(fontSize: 17),
+            style: const TextStyle(fontSize: 17),
             textAlignVertical: TextAlignVertical.center,
             controller: _noteController,
             onChanged: (value) {
@@ -46,10 +47,10 @@ class _AddProductBodyState extends State<AddProductBody> {
                 noteInput = _noteController.text;
               });
             },
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               filled: true,
               prefixIcon: Padding(
-                padding: const EdgeInsets.only(left: 15.0, right: 15, top: 15),
+                padding: EdgeInsets.only(left: 15.0, right: 15, top: 15),
                 child: Text("Notes:"),
               ),
               border: OutlineInputBorder(
@@ -140,7 +141,7 @@ class _AddProductBodyState extends State<AddProductBody> {
             ),
           ),
           const Divider(color: Styles.divider, thickness: 2),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           AddProductFooter(
               filePath: widget.filePath,
               value: widget.value,

@@ -28,7 +28,7 @@ class DialogBox extends StatelessWidget {
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white)),
                   hintStyle: TextStyle(color: Colors.white),
-                  hintText: "Add New Thing"),
+                  hintText: "Add New Item"),
               style: TextStyle(color: Colors.white),
             ),
             Row(

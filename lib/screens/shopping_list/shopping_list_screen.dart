@@ -88,9 +88,6 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
               },
             ),
           ),
-          // const SizedBox(
-          //   height: 25,
-          // ),
           FloatingActionButton(
             onPressed: createNewTask,
             backgroundColor: Styles.colorFont,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:intl/intl.dart';
 
 import '../../../constants/styles.dart';
 import '../../../data/products_database.dart';
@@ -128,7 +129,8 @@ class _InfoItemBodyState extends State<InfoItemBody> {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      '     Exipre:   ' + days.toString() + ' D',
+                      '     Exipre:   ' +
+                          DateFormat('dd/MM/yyyy').format(expireDate),
                       style: TextStyle(fontSize: 18),
                     ),
                   ),

@@ -94,8 +94,7 @@ class _AddProductHeaderState extends State<AddProductHeader> {
                   borderRadius: BorderRadius.circular(30.0),
                 ),
               ),
-              child:
-                  const Text('use strickers', style: TextStyle(fontSize: 18))),
+              child: const Text('use sticker', style: TextStyle(fontSize: 18))),
         ),
         SizedBox(height: 10),
         Row(
